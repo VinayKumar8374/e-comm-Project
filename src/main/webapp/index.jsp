@@ -1,447 +1,248 @@
 <!doctype html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>NexusShop — Premium E‑Commerce</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>NexusShop — Modern UI</title>
 
-    <!-- Fonts & Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <style>
-        :root {
-            --bg: #ffffff;
-            --primary: #0f172a;
-            --accent: #3b82f6;
-            --accent-hover: #2563eb;
-            --muted: #64748b;
-            --card: #ffffff;
-            --surface: #f8fafc;
-            --success: #10b981;
-            --border: #e2e8f0;
-            --radius-lg: 16px;
-            --radius-md: 12px;
-            --container: 1280px;
-            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-        }
+<style>
+:root{
+--primary:#0f172a;
+--accent:#6366f1;
+--accent-light:#818cf8;
+--bg:#f8fafc;
+--card:#ffffff;
+--muted:#6b7280;
+--radius:14px;
+}
 
-        * { box-sizing: border-box; transition: all 0.2s ease-in-out; }
+*{box-sizing:border-box;transition:all .2s ease;}
+body{
+margin:0;
+font-family:Inter;
+background:var(--bg);
+color:var(--primary);
+font-size:15px;
+}
+html{scroll-behavior:smooth;}
 
-        body {
-            margin: 0;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            color: var(--primary);
-            background: var(--bg);
-            line-height: 1.6;
-        }
+.container{max-width:1200px;margin:auto;padding:0 20px;}
 
-        .container {
-            width: 100%;
-            max-width: var(--container);
-            margin: 0 auto;
-            padding: 0 24px;
-        }
+header{
+position:sticky;top:0;background:white;
+box-shadow:0 4px 20px rgba(0,0,0,0.05);
+z-index:100;
+}
 
-        /* Header */
-        header {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border);
-        }
+.header-inner{
+display:flex;justify-content:space-between;align-items:center;
+padding:14px 0;
+}
 
-        .header-inner {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 16px 0;
-        }
+.brand{font-family:Poppins;font-weight:700;font-size:20px;}
+.accent{color:var(--accent);}
 
-        .brand {
-            font-weight: 800;
-            font-size: 24px;
-            letter-spacing: -1px;
-            text-decoration: none;
-            color: var(--primary);
-        }
+.search{
+background:#eef2ff;padding:8px 12px;border-radius:999px;
+display:flex;gap:8px;align-items:center;
+}
+.search input{border:none;background:none;outline:none;}
 
-        .brand span { color: var(--accent); }
+.icon-btn{border:none;background:none;cursor:pointer;}
 
-        /* Navigation */
-        .main-nav ul {
-            display: flex;
-            gap: 12px;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
+.cart{position:relative;}
+.cart-count{
+position:absolute;top:-6px;right:-6px;
+background:var(--accent);color:white;
+width:20px;height:20px;border-radius:50%;
+display:grid;place-items:center;font-size:11px;
+}
 
-        .main-nav a {
-            padding: 8px 16px;
-            border-radius: var(--radius-md);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 14px;
-            color: var(--muted);
-        }
+.hero{
+text-align:center;
+padding:80px 20px;
+color:white;
+background:linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)),
+url('https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?auto=format&fit=crop&w=1400&q=80') center/cover;
+}
 
-        .main-nav a:hover {
-            color: var(--accent);
-            background: var(--surface);
-        }
+.hero h1{font-size:38px;font-family:Poppins;}
 
-        /* Search Bar */
-        .search-container {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            padding: 6px 16px;
-            border-radius: 99px;
-            display: flex;
-            align-items: center;
-            width: 300px;
-        }
+.btn{
+padding:10px 18px;border:none;border-radius:999px;
+cursor:pointer;font-weight:600;
+}
 
-        .search-container input {
-            border: none;
-            background: transparent;
-            outline: none;
-            padding: 6px;
-            width: 100%;
-            font-size: 14px;
-        }
+.btn-primary{
+background:linear-gradient(135deg,var(--accent),var(--accent-light));
+color:white;
+box-shadow:0 8px 20px rgba(99,102,241,0.3);
+}
+.btn-primary:hover{transform:translateY(-2px);}
 
-        /* Hero Section */
-        .hero {
-            padding: 100px 0;
-            background: radial-gradient(circle at top right, #eff6ff, #ffffff);
-            text-align: center;
-        }
+.section{padding:50px 0;}
+.grid{display:grid;gap:20px;}
 
-        .hero h1 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 24px;
-            letter-spacing: -2px;
-        }
+.categories{grid-template-columns:repeat(auto-fit,minmax(150px,1fr));}
+.products{grid-template-columns:repeat(auto-fit,minmax(250px,1fr));}
 
-        .hero p {
-            color: var(--muted);
-            font-size: 18px;
-            max-width: 600px;
-            margin: 0 auto 32px;
-        }
+.cat-card,.product{
+background:white;border-radius:var(--radius);
+box-shadow:0 8px 20px rgba(0,0,0,0.05);
+}
 
-        /* Buttons */
-        .btn {
-            padding: 12px 28px;
-            border-radius: 99px;
-            font-weight: 700;
-            cursor: pointer;
-            border: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            text-decoration: none;
-        }
+.cat-card{
+padding:20px;text-align:center;cursor:pointer;
+}
+.cat-card:hover{transform:translateY(-5px);}
 
-        .btn-primary {
-            background: var(--primary);
-            color: white;
-        }
+.product{
+overflow:hidden;display:flex;flex-direction:column;
+position:relative;
+}
+.product:hover{
+transform:translateY(-8px);
+box-shadow:0 20px 40px rgba(0,0,0,0.08);
+}
 
-        .btn-primary:hover {
-            background: var(--accent);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.3);
-        }
+.product img{height:200px;width:100%;object-fit:cover;}
 
-        /* Cards */
-        .grid {
-            display: grid;
-            gap: 24px;
-            margin-top: 40px;
-        }
+.product-body{padding:12px;}
+.price{font-weight:700;}
+.old-price{text-decoration:line-through;color:gray;font-size:13px;}
 
-        .cat-card {
-            background: var(--surface);
-            padding: 32px;
-            border-radius: var(--radius-lg);
-            text-align: center;
-            cursor: pointer;
-            border: 1px solid transparent;
-        }
+.product-footer{
+display:flex;gap:10px;padding:12px;
+}
 
-        .cat-card:hover {
-            border-color: var(--accent);
-            background: white;
-            box-shadow: var(--shadow);
-            transform: translateY(-5px);
-        }
+.add-btn{
+flex:1;background:var(--primary);
+color:white;border:none;padding:10px;border-radius:8px;
+cursor:pointer;
+}
+.wish-btn{
+border:1px solid #ddd;background:none;padding:8px;border-radius:8px;
+cursor:pointer;
+}
+.wish-btn.active{color:red;}
 
-        .product-card {
-            background: white;
-            border-radius: var(--radius-lg);
-            border: 1px solid var(--border);
-            overflow: hidden;
-            position: relative;
-        }
+footer{text-align:center;padding:30px;color:var(--muted);}
 
-        .product-card:hover {
-            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
-        }
+/* Toast */
+#toast{
+position:fixed;bottom:20px;right:20px;
+background:#111;color:white;
+padding:12px 18px;border-radius:8px;
+display:none;
+}
 
-        .product-img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-        }
-
-        .product-content {
-            padding: 20px;
-        }
-
-        .price-tag {
-            font-size: 20px;
-            font-weight: 800;
-            color: var(--primary);
-        }
-
-        /* Flash Sale */
-        .flash-sale {
-            background: var(--primary);
-            color: white;
-            border-radius: 24px;
-            padding: 48px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            align-items: center;
-            margin: 60px 0;
-        }
-
-        .timer-box {
-            background: rgba(255,255,255,0.1);
-            padding: 15px;
-            border-radius: 12px;
-            min-width: 80px;
-            text-align: center;
-        }
-
-        /* Badge */
-        .badge {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            background: var(--accent);
-            color: white;
-            padding: 4px 12px;
-            border-radius: 99px;
-            font-size: 12px;
-            font-weight: 700;
-        }
-
-        @media (max-width: 900px) {
-            .flash-sale { grid-template-columns: 1fr; }
-            .search-container { display: none; }
-            .grid.products { grid-template-columns: repeat(2, 1fr); }
-        }
-
-        @media (max-width: 600px) {
-            .grid.products { grid-template-columns: 1fr; }
-        }
-    </style>
+/* Mobile */
+@media(max-width:768px){
+.products{grid-template-columns:1fr;}
+}
+</style>
 </head>
 
 <body>
-    <header>
-        <div class="container header-inner">
-            <a class="brand" href="#">Nexus<span>Shop</span></a>
-            
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#categories">Shop</a></li>
-                    <li><a href="#deals">Deals</a></li>
-                </ul>
-            </nav>
 
-            <div class="search-container">
-                <i class="fas fa-search" style="color: var(--muted)"></i>
-                <input type="text" id="searchInput" placeholder="Search brands...">
-            </div>
+<header>
+<div class="container header-inner">
+<div class="brand">Nexus<span class="accent">Shop</span></div>
 
-            <div style="display:flex; gap:15px; align-items:center;">
-                <button class="btn" style="padding:10px; background:transparent;"><i class="far fa-user"></i></button>
-                <div style="position:relative;">
-                    <button class="btn" id="cartBtn" style="padding:10px; background:var(--surface);">
-                        <i class="fas fa-shopping-bag"></i>
-                        <span id="cartCount" style="position:absolute; top:-5px; right:-5px; background:var(--accent); color:white; width:20px; height:20px; border-radius:50%; font-size:11px; display:grid; place-items:center;">0</span>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </header>
+<div class="search">
+<input id="searchInput" placeholder="Search products...">
+<button class="icon-btn"><i class="fas fa-search"></i></button>
+</div>
 
-    <main>
-        <section class="hero">
-            <div class="container">
-                <h1>Tech & Style <br> Perfectly Curated.</h1>
-                <p>Experience the next generation of shopping with NexusShop. Free shipping on all orders over $100.</p>
-                <div style="display:flex; gap:15px; justify-content:center;">
-                    <button class="btn btn-primary" id="shopNow">Start Shopping <i class="fas fa-chevron-right"></i></button>
-                    <button class="btn" style="border:1px solid var(--border)">View Lookbook</button>
-                </div>
-            </div>
-        </section>
+<div>
+<button class="icon-btn"><i class="far fa-user"></i></button>
+<button class="icon-btn"><i class="far fa-heart"></i></button>
+<span class="cart">
+<i class="fas fa-shopping-cart"></i>
+<span id="cartCount" class="cart-count">0</span>
+</span>
+</div>
+</div>
+</header>
 
-        <section id="categories" class="container" style="padding:80px 0;">
-            <div style="text-align:center;">
-                <h2 style="font-size:32px; font-weight:800;">Browse Categories</h2>
-                <p style="color:var(--muted)">Top quality picks across all sectors</p>
-            </div>
-            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));" id="categoriesGrid"></div>
-        </section>
+<section class="hero">
+<h1>Premium Shopping Experience</h1>
+<p>Modern UI + Smooth UX</p>
+<button class="btn btn-primary">Shop Now</button>
+</section>
 
-        <section class="container" id="deals">
-            <div class="flash-sale">
-                <div>
-                    <span style="color:var(--accent); font-weight:700; text-transform:uppercase; letter-spacing:2px;">Limited Offer</span>
-                    <h2 style="font-size:42px; margin:10px 0;">MacBook Air M3</h2>
-                    <p style="opacity:0.8; margin-bottom:30px;">The world's most popular laptop is even better with the power of M3. Grab yours before time runs out.</p>
-                    
-                    <div style="display:flex; gap:15px; margin-bottom:30px;">
-                        <div class="timer-box"><div id="dealHours" style="font-size:24px; font-weight:800;">00</div><small>Hrs</small></div>
-                        <div class="timer-box"><div id="dealMinutes" style="font-size:24px; font-weight:800;">00</div><small>Min</small></div>
-                        <div class="timer-box"><div id="dealSeconds" style="font-size:24px; font-weight:800;">00</div><small>Sec</small></div>
-                    </div>
+<section class="section container">
+<h2>Categories</h2>
+<div class="grid categories" id="categoriesGrid"></div>
+</section>
 
-                    <button class="btn" style="background:var(--accent); color:white; padding:15px 40px;">Claim Discount — $899</button>
-                </div>
-                <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800" style="width:100%; border-radius:12px;" alt="MacBook">
-            </div>
-        </section>
+<section class="section container">
+<h2>Products</h2>
+<div class="grid products" id="productsGrid"></div>
+</section>
 
-        <section class="container" style="padding-bottom:100px;">
-            <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:40px;">
-                <div>
-                    <h2 style="font-size:32px; font-weight:800;">New Arrivals</h2>
-                    <p style="color:var(--muted)">The latest drops from our favorite brands</p>
-                </div>
-            </div>
-            <div class="grid products" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));" id="productsGrid"></div>
-        </section>
-    </main>
+<footer>© 2026 NexusShop</footer>
 
-    <footer style="background:var(--surface); padding:80px 0 40px; border-top:1px solid var(--border);">
-        <div class="container" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:40px;">
-            <div>
-                <a class="brand" href="#">Nexus<span>Shop</span></a>
-                <p style="color:var(--muted); margin-top:20px;">Premium quality goods delivered to your doorstep since 2024.</p>
-            </div>
-            <div>
-                <h4>Resources</h4>
-                <ul style="list-style:none; padding:0; color:var(--muted); line-height:2.5;">
-                    <li>Shipping Info</li>
-                    <li>Returns Policy</li>
-                    <li>Gift Cards</li>
-                </ul>
-            </div>
-            <div>
-                <h4>Join Our Newsletter</h4>
-                <div style="display:flex; margin-top:20px;">
-                    <input type="email" placeholder="Email" style="padding:12px; border-radius:12px 0 0 12px; border:1px solid var(--border); outline:none; flex:1;">
-                    <button class="btn btn-primary" style="border-radius:0 12px 12px 0;">Join</button>
-                </div>
-            </div>
-        </div>
-        <div class="container" style="margin-top:60px; text-align:center; color:var(--muted); font-size:14px; border-top:1px solid var(--border); padding-top:20px;">
-            &copy; <span id="year"></span> NexusShop. All rights reserved.
-        </div>
-    </footer>
+<div id="toast">Added to cart</div>
 
-    <script>
-        const CATEGORIES = [
-            { id: 'phones', name: 'Smartphones', icon: 'fa-mobile-screen-button' },
-            { id: 'laptops', name: 'Laptops', icon: 'fa-laptop' },
-            { id: 'audio', name: 'Audio', icon: 'fa-headphones-simple' },
-            { id: 'wearables', name: 'Wearables', icon: 'fa-clock' }
-        ];
+<script>
+const PRODUCTS=[
+{id:1,title:'iPhone 14',price:999,img:'https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb'},
+{id:2,title:'MacBook Pro',price:1999,img:'https://images.unsplash.com/photo-1593642632823-8f785ba67e45'},
+{id:3,title:'Headphones',price:299,img:'https://images.unsplash.com/photo-1600185365483-26d7a4cc7519'}
+];
 
-        const PRODUCTS = [
-            { id: 1, title: 'iPhone 15 Pro', price: 999, badge: 'Hot', img: 'https://images.unsplash.com/photo-1696446701796-da61225697cc?auto=format&fit=crop&w=600', category: 'phones' },
-            { id: 2, title: 'Sony XM5 Headphones', price: 349, badge: '-15%', img: 'https://images.unsplash.com/photo-1613040809024-b4ef7ba99bc3?auto=format&fit=crop&w=600', category: 'audio' },
-            { id: 3, title: 'MacBook Pro 14', price: 1999, img: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=600', category: 'laptops' },
-            { id: 4, title: 'Pixel Watch 2', price: 299, badge: 'New', img: 'https://images.unsplash.com/photo-1508685096489-7aac291ba597?auto=format&fit=crop&w=600', category: 'wearables' }
-        ];
+let cart=0;
 
-        let cartCount = 0;
+function renderProducts(list){
+const grid=document.getElementById('productsGrid');
+grid.innerHTML='';
+list.forEach(p=>{
+const el=document.createElement('div');
+el.className='product';
+el.innerHTML=`
+<img src="${p.img}">
+<div class="product-body">
+<h4>${p.title}</h4>
+<div class="price">$${p.price}</div>
+</div>
+<div class="product-footer">
+<button class="add-btn" onclick="addToCart()">Add</button>
+<button class="wish-btn" onclick="toggleWish(this)"><i class="far fa-heart"></i></button>
+</div>`;
+grid.appendChild(el);
+});
+}
 
-        function init() {
-            const catGrid = document.getElementById('categoriesGrid');
-            const prodGrid = document.getElementById('productsGrid');
+function addToCart(){
+cart++;
+document.getElementById('cartCount').textContent=cart;
+showToast("Added to cart 🛒");
+}
 
-            // Render Categories
-            CATEGORIES.forEach(cat => {
-                const div = document.createElement('div');
-                div.className = 'cat-card';
-                div.innerHTML = `<i class="fas ${cat.icon}" style="font-size:32px; color:var(--accent); margin-bottom:15px;"></i><h3>${cat.name}</h3>`;
-                catGrid.appendChild(div);
-            });
+function toggleWish(btn){
+btn.classList.toggle('active');
+btn.innerHTML=btn.classList.contains('active')?
+'<i class="fas fa-heart"></i>':'<i class="far fa-heart"></i>';
+}
 
-            // Render Products
-            PRODUCTS.forEach(p => {
-                const article = document.createElement('article');
-                article.className = 'product-card';
-                article.innerHTML = `
-                    ${p.badge ? `<span class="badge">${p.badge}</span>` : ''}
-                    <img src="${p.img}" class="product-img" alt="${p.title}">
-                    <div class="product-content">
-                        <small style="color:var(--muted); text-transform:uppercase;">${p.category}</small>
-                        <h3 style="margin:5px 0 15px; font-size:18px;">${p.title}</h3>
-                        <div style="display:flex; justify-content:space-between; align-items:center;">
-                            <span class="price-tag">$${p.price}</span>
-                            <button class="btn btn-primary add-to-cart" data-id="${p.id}" style="padding:8px 16px; font-size:13px;">Add to Bag</button>
-                        </div>
-                    </div>
-                `;
-                prodGrid.appendChild(article);
-            });
+function showToast(msg){
+const t=document.getElementById('toast');
+t.innerText=msg;
+t.style.display='block';
+setTimeout(()=>t.style.display='none',2000);
+}
 
-            // Add to Cart Logic
-            document.querySelectorAll('.add-to-cart').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    cartCount++;
-                    document.getElementById('cartCount').textContent = cartCount;
-                    this.innerHTML = '<i class="fas fa-check"></i>';
-                    this.style.background = 'var(--success)';
-                    setTimeout(() => {
-                        this.innerHTML = 'Add to Bag';
-                        this.style.background = 'var(--primary)';
-                    }, 1500);
-                });
-            });
+document.getElementById('searchInput').addEventListener('input',e=>{
+const q=e.target.value.toLowerCase();
+renderProducts(PRODUCTS.filter(p=>p.title.toLowerCase().includes(q)));
+});
 
-            // Countdown
-            setInterval(() => {
-                const now = new Date();
-                document.getElementById('dealHours').innerText = 24 - now.getHours();
-                document.getElementById('dealMinutes').innerText = 60 - now.getMinutes();
-                document.getElementById('dealSeconds').innerText = 60 - now.getSeconds();
-            }, 1000);
+renderProducts(PRODUCTS);
+</script>
 
-            document.getElementById('year').textContent = new Date().getFullYear();
-        }
-
-        document.getElementById('shopNow').addEventListener('click', () => {
-            window.scrollTo({ top: document.getElementById('categories').offsetTop - 100, behavior: 'smooth' });
-        });
-
-        init();
-    </script>
 </body>
 </html>
